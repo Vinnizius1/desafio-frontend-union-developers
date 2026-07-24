@@ -1,0 +1,43 @@
+@use 'variables' as *;
+
+// ==========================================
+// MIXINS DE RESPONSIVIDADE (Mobile-First)
+// ==========================================
+
+/// Mixin para aplicar estilos a partir do breakpoint de Tablet
+@mixin respond-from($breakpoint) {
+  @if $breakpoint == 'sm' {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == 'md' {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == 'lg' {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == 'xl' {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else {
+    @media (min-width: $breakpoint) { @content; }
+  }
+}
+
+// --- Mixins de Alinhamento Flexbox ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// --- Mixin de Transição Suave ---
+@mixin transition($property: all, $duration: 0.2s, $ease: ease-in-out) {
+  transition: $property $duration $ease;
+}
