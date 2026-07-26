@@ -11,7 +11,7 @@
 
 ## 🧪 Fase 2: TDD & Utilitários Base
 - [x] Escrever testes (Red) e implementar (Green) funções de filtro (Nome, Sobrenome, Idade)
-- [ ] Escrever testes (Red) e implementar (Green) funções de cálculo de paginação (10 por página)
+- [x] Escrever testes (Red) e implementar (Green) funções de cálculo de paginação (10 por página)
 - [ ] Escrever testes (Red) e implementar (Green) custom hook `useDebounce`
 
 ## 🎨 Fase 3: Componentização & Storybook (SCSS Modules + RTL)
