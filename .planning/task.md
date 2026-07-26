@@ -15,7 +15,7 @@
 - [x] Escrever testes (Red) e implementar (Green) custom hook `useDebounce`
 
 ## 🎨 Fase 3: Componentização & Storybook (SCSS Modules + RTL)
-- [ ] Componente `Button` (Código + `.module.scss` + Storybook + Testes RTL)
+- [x] Componente `Button` (Código + `.module.scss` + Testes RTL)
 - [ ] Componente `Input / SearchBar` (Código + `.module.scss` + Storybook + Testes RTL)
 - [ ] Componente `UserCard` (Código + `.module.scss` + Storybook + Testes RTL)
 - [ ] Componente `Pagination` (Código + `.module.scss` + Storybook + Testes RTL)
