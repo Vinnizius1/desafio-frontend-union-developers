@@ -1,6 +1,5 @@
 # Local Agent Protocols & Configs
 .agents/
-.planning/
 
 # Dependencies
 node_modules/
