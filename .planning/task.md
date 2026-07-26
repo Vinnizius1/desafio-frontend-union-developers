@@ -7,7 +7,7 @@
 - [ ] Configurar TanStack Query (React Query v5)
 - [ ] Configurar Motion (Framer Motion)
 - [ ] Configurar Storybook 10+ (`npx storybook@latest init`) com Decorators Globais
-- [ ] Configurar Jest + React Testing Library + user-event
+- [x] Configurar Vitest + React Testing Library + user-event (nativo do Vite)
 
 ## 🧪 Fase 2: TDD & Utilitários Base
 - [ ] Escrever testes (Red) e implementar (Green) funções de filtro (Nome, Sobrenome, Idade)

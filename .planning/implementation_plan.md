@@ -8,7 +8,7 @@ Aplicação web desenvolvida em **React 19 + TypeScript + Vite** para listagem, 
 
 1. **Estilização**: SCSS Modules (`.module.scss`) + Tokens Globais (`_variables.scss` & `_mixins.scss`) em abordagem **Mobile-First**.
 2. **Estado & URL**: TanStack Query (`useQuery`) integrado com `URLSearchParams` (sincronização de página e filtros na URL `/?page=1&name=john`).
-3. **Estratégia de Testes**: **TDD** (*Red -> Green -> Refactor*) para utilitários e custom hooks, com React Testing Library focado em comportamento do usuário (`screen.getByRole` + `@testing-library/user-event`).
+3. **Estratégia de Testes**: **TDD** (*Red -> Green -> Refactor*) para utilitários e custom hooks, com **Vitest + React Testing Library** focado em comportamento do usuário (`screen.getByRole` + `@testing-library/user-event`).
 4. **Storybook 10+**: Histórias abrangentes cobrindo todos os estados (*Default, Loading, Error, Empty*) envelopadas por Decorators Globais no `.storybook/preview.tsx`.
 5. **Animações**: Motion (Framer Motion) para microinterações e transições de cards e telas.
 
