@@ -9,6 +9,8 @@ node_modules/
 dist/
 build/
 storybook-static/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Environment variables
 .env
