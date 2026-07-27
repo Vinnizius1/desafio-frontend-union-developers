@@ -1,0 +1,91 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.header {
+  width: 100%;
+  background-color: rgba(23, 23, 23, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: clamp(0.875rem, 2vw, 1.25rem) clamp(1rem, 4vw, 3.5rem);
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__brandGroup {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-md;
+  }
+
+  &__logoBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: v.$radius-md;
+    background: v.$gradient-brand;
+    color: v.$color-white;
+    font-family: v.$font-heading;
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-bold;
+    box-shadow: 0 4px 15px rgba(254, 1, 47, 0.3);
+  }
+
+  &__title {
+    font-family: v.$font-heading;
+    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text-white;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  &__metaGroup {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+  }
+
+  &__tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-family: v.$font-primary;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-semibold;
+    color: v.$color-primary;
+    background: rgba(129, 26, 192, 0.15);
+    border: 1px solid rgba(129, 26, 192, 0.3);
+    border-radius: v.$radius-full;
+  }
+
+  &__githubLink {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: v.$radius-md;
+    background-color: v.$color-bg-card;
+    color: v.$color-neutral-50;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: v.$color-white;
+      border-color: v.$color-primary;
+      transform: translateY(-2px);
+    }
+  }
+}

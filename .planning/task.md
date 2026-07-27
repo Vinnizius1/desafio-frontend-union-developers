@@ -19,7 +19,7 @@
 - [x] Componente `Input / SearchBar` (Código + `.module.scss` + Storybook + Testes RTL)
 - [x] Componente `UserCard` (Código + `.module.scss` + Storybook + Testes RTL)
 - [x] Componente `Pagination` (Código + `.module.scss` + Storybook + Testes RTL)
-- [ ] Componente `Header / Navbar` (Código + `.module.scss` + Storybook + Testes RTL)
+- [x] Componente `Header / Navbar` (Código + `.module.scss` + Storybook + Testes RTL)
 
 ## ⚡ Fase 4: Integração de API & Páginas Sincronizadas
 - [x] Criar tipos TypeScript da API `randomuser.me`
