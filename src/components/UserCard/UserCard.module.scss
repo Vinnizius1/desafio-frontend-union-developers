@@ -1,0 +1,92 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: v.$color-bg-card;
+  border-radius: v.$radius-lg;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: v.$spacing-lg;
+  box-shadow: v.$shadow-card;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: rgba(129, 26, 192, 0.4);
+    box-shadow: 0 8px 30px rgba(129, 26, 192, 0.2);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-md;
+    margin-bottom: v.$spacing-md;
+  }
+
+  &__avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: v.$radius-full;
+    object-fit: cover;
+    border: 2px solid v.$color-primary;
+    box-shadow: 0 0 12px rgba(129, 26, 192, 0.3);
+  }
+
+  &__titleGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__name {
+    font-family: v.$font-heading;
+    font-size: v.$font-size-lg;
+    font-weight: v.$font-weight-bold;
+    color: v.$color-text-white;
+    line-height: 1.2;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 0.2rem 0.6rem;
+    font-family: v.$font-primary;
+    font-size: v.$font-size-xs;
+    font-weight: v.$font-weight-semibold;
+    border-radius: v.$radius-full;
+    background-color: rgba(244, 223, 115, 0.15);
+    color: v.$color-yellow;
+    border: 1px solid rgba(244, 223, 115, 0.3);
+  }
+
+  &__divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin-bottom: v.$spacing-md;
+  }
+
+  &__infoList {
+    display: flex;
+    flex-direction: column;
+    gap: v.$spacing-sm;
+  }
+
+  &__infoItem {
+    display: flex;
+    align-items: center;
+    gap: v.$spacing-sm;
+    font-family: v.$font-body;
+    font-size: v.$font-size-sm;
+    color: v.$color-neutral-100;
+    word-break: break-all;
+
+    svg {
+      flex-shrink: 0;
+      color: v.$color-primary;
+    }
+  }
+}
