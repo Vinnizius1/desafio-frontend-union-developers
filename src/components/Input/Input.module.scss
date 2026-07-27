@@ -1,0 +1,98 @@
+@use '../../styles/variables' as v;
+@use '../../styles/mixins' as m;
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  gap: v.$spacing-xs;
+  width: 100%;
+
+  &__label {
+    font-family: v.$font-primary;
+    font-size: v.$font-size-sm;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-neutral-50;
+  }
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: v.$color-grey-500;
+    pointer-events: none;
+  }
+
+  &__element {
+    width: 100%;
+    padding: 0.875rem 1rem 0.875rem 2.75rem;
+    font-family: v.$font-body;
+    font-size: v.$font-size-md;
+    color: v.$color-text-white;
+    background-color: v.$color-bg-input;
+    border: 1px solid v.$color-grey-600;
+    border-radius: v.$radius-md;
+    outline: none;
+    transition: all 0.2s ease-in-out;
+
+    &::placeholder {
+      color: v.$color-grey-500;
+    }
+
+    &:focus {
+      border-color: v.$color-primary;
+      box-shadow: 0 0 0 3px rgba(129, 26, 192, 0.2);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      background-color: v.$color-grey-700;
+    }
+
+    // Esconde o "X" nativo do navegador para usarmos o nosso com acessibilidade e focus ref
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-decoration {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  }
+
+  &__clearButton {
+    position: absolute;
+    right: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem;
+    background: transparent;
+    border: none;
+    color: v.$color-grey-400;
+    border-radius: v.$radius-full;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+      color: v.$color-white;
+      background-color: v.$color-grey-600;
+    }
+
+    &:focus-visible {
+      outline: 2px solid v.$color-primary;
+    }
+  }
+
+  &__errorText {
+    font-family: v.$font-primary;
+    font-size: v.$font-size-xs;
+    color: #FE012F;
+  }
+}
