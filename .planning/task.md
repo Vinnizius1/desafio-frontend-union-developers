@@ -6,7 +6,7 @@
 - [x] Configurar React Router DOM v7
 - [x] Configurar TanStack Query (React Query v5)
 - [x] Configurar Motion (Framer Motion)
-- [ ] Configurar Storybook 10+ (`npx storybook@latest init`) com Decorators Globais
+- [x] Configurar Storybook 8 (`@storybook/react-vite`) com Decorators Globais
 - [x] Configurar Vitest + React Testing Library + user-event (nativo do Vite)
 
 ## 🧪 Fase 2: TDD & Utilitários Base
@@ -15,7 +15,7 @@
 - [x] Escrever testes (Red) e implementar (Green) custom hook `useDebounce`
 
 ## 🎨 Fase 3: Componentização & Storybook (SCSS Modules + RTL)
-- [x] Componente `Button` (Código + `.module.scss` + Testes RTL)
+- [x] Componente `Button` (Código + `.module.scss` + Storybook + Testes RTL)
 - [ ] Componente `Input / SearchBar` (Código + `.module.scss` + Storybook + Testes RTL)
 - [ ] Componente `UserCard` (Código + `.module.scss` + Storybook + Testes RTL)
 - [ ] Componente `Pagination` (Código + `.module.scss` + Storybook + Testes RTL)
