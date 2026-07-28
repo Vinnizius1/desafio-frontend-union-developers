@@ -48,10 +48,21 @@ export function UserTable({ users, onUserClick, className = '' }: UserTableProps
             const userId = user.id?.value || user.id?.name || `user-${idx}`;
 
             return (
-              <tr key={user.email || idx}>
+              <tr
+                key={user.email || idx}
+                onClick={() => handleAction(user)}
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleAction(user);
+                  }
+                }}
+                aria-label={`Linha do usuário ${user.name.first} ${user.name.last}`}
+              >
                 <td className={styles.idCell}>{userId}</td>
-                <td>{user.name.first}</td>
-                <td>{user.name.last}</td>
+                <td className={styles.clickableName}>{user.name.first}</td>
+                <td className={styles.clickableName}>{user.name.last}</td>
                 <td>{user.name.title}</td>
                 <td>{formatDate(user.dob?.date)}</td>
                 <td>{user.dob?.age} anos</td>
@@ -59,7 +70,10 @@ export function UserTable({ users, onUserClick, className = '' }: UserTableProps
                   <button
                     type="button"
                     className={styles.actionButton}
-                    onClick={() => handleAction(user)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleAction(user);
+                    }}
                     aria-label={`Ver perfil de ${user.name.first} ${user.name.last}`}
                   >
                     Ver Perfil

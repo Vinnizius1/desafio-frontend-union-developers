@@ -9,7 +9,7 @@ export interface HeaderProps {
 
 export function Header({
   title = 'Desafio Frontend - Union Developers',
-  version = 'v1.0.0',
+  version = 'v1.2.0',
   githubUrl = 'https://github.com/Vinnizius1/desafio-frontend-union-developers',
   className = '',
 }: HeaderProps) {

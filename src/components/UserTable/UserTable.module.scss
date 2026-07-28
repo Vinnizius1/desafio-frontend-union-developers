@@ -35,9 +35,15 @@
     tr {
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       transition: background-color 0.2s ease;
+      cursor: pointer;
 
       &:hover {
-        background-color: rgba(255, 255, 255, 0.04);
+        background-color: rgba(255, 255, 255, 0.06);
+
+        .clickableName {
+          color: $color-yellow;
+          text-decoration: underline;
+        }
       }
 
       &:last-child {
@@ -51,6 +57,12 @@
       white-space: nowrap;
     }
   }
+}
+
+.clickableName {
+  font-weight: $font-weight-medium;
+  color: $color-text-white;
+  transition: color 0.2s ease;
 }
 
 .idCell {

@@ -151,7 +151,7 @@ export function Home() {
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.25 }}
               >
-                <UserTable users={users} onUserClick={handleOpenModal} />
+                <UserTable users={users} />
               </motion.div>
             )}
           </AnimatePresence>
