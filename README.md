@@ -21,6 +21,14 @@
 
 ---
 
+## ⚡ Pontuação de Auditoria — Google Lighthouse (Produção)
+
+| Desempenho | Acessibilidade | Práticas Recomendadas | SEO |
+| :---: | :---: | :---: | :---: |
+| 🟢 **95** | 🟢 **95** | 🟢 **100** | 🟢 **92** |
+
+---
+
 ## 🛠️ Tech Stack & Ferramentas
 
 * **Core:** React 19 + TypeScript + Vite
@@ -29,7 +37,7 @@
 * **Roteamento:** React Router DOM v7
 * **Animações:** Motion (Framer Motion v12+)
 * **Documentação de Componentes:** Storybook v10+
-* **Testes Automatizados:** Jest + React Testing Library (RTL) + `@testing-library/user-event`
+* **Testes Automatizados:** Vitest + React Testing Library (RTL) + `@testing-library/user-event` (nativo do Vite com TDD)
 * **API Externa:** RandomUser API (`randomuser.me`)
 
 ---
