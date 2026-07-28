@@ -99,4 +99,4 @@ npm run storybook
 ## ✒️ Autor
 
 Desenvolvido com 💜 por **Vinicius**  
-🔗 [GitHub](https://github.com/Vinnizius1) | 💼 [LinkedIn](#)
+🔗 [GitHub](https://github.com/Vinnizius1) | 💼 [LinkedIn](https://www.linkedin.com/in/vinmm/)
