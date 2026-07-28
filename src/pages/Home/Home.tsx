@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from '../../components/Header/Header';
 import { Input } from '../../components/Input/Input';
@@ -19,30 +18,37 @@ export function Home() {
     search,
     gender,
     viewMode,
+    modalUserEmail,
     setPage,
     setSearch,
     setGender,
     setViewMode,
+    openUserModal,
+    closeUserModal,
     resetFilters,
   } = useUserParams();
 
-  const { users, isLoading, isError, isFetching, totalPages, refetch } = useUsersQuery({
+  const { users, rawUsers, isLoading, isError, isFetching, totalPages, refetch } = useUsersQuery({
     page,
     gender,
     search,
   });
 
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // Encontra o usuário do modal caso exista ?user= na URL
+  const selectedUser = modalUserEmail
+    ? (rawUsers ?? []).find(
+        (u) => u.email === modalUserEmail || encodeURIComponent(u.email) === modalUserEmail
+      ) || null
+    : null;
+
+  const isModalOpen = Boolean(selectedUser || modalUserEmail);
 
   const handleOpenModal = (user: User) => {
-    setSelectedUser(user);
-    setIsModalOpen(true);
+    openUserModal(user.email);
   };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedUser(null);
+    closeUserModal();
   };
 
   return (
@@ -169,7 +175,7 @@ export function Home() {
         )}
       </main>
 
-      {/* Modal de Detalhes do Usuário */}
+      {/* Modal de Detalhes do Usuário Sincronizado na URL */}
       <UserModal user={selectedUser} isOpen={isModalOpen} onClose={handleCloseModal} />
     </div>
   );

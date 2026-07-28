@@ -9,6 +9,7 @@ export function useUserParams() {
   const search = searchParams.get('search') || '';
   const gender = (searchParams.get('gender') as 'all' | 'male' | 'female') || 'all';
   const viewMode = (searchParams.get('view') as ViewMode) || 'grid';
+  const modalUserEmail = searchParams.get('user') || '';
 
   const setPage = useCallback(
     (newPage: number) => {
@@ -84,6 +85,30 @@ export function useUserParams() {
     [setSearchParams]
   );
 
+  const openUserModal = useCallback(
+    (email: string) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          next.set('user', email);
+          return next;
+        }
+        // Sem { replace: true } para criar uma entrada no histórico do navegador (history.push)
+      );
+    },
+    [setSearchParams]
+  );
+
+  const closeUserModal = useCallback(() => {
+    setSearchParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.delete('user');
+        return next;
+      }
+    );
+  }, [setSearchParams]);
+
   const resetFilters = useCallback(() => {
     setSearchParams(new URLSearchParams(), { replace: true });
   }, [setSearchParams]);
@@ -93,10 +118,13 @@ export function useUserParams() {
     search,
     gender,
     viewMode,
+    modalUserEmail,
     setPage,
     setSearch,
     setGender,
     setViewMode,
+    openUserModal,
+    closeUserModal,
     resetFilters,
   };
 }

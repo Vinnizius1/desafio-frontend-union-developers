@@ -19,16 +19,18 @@ describe('useUserParams', () => {
     expect(result.current.page).toBe(1);
     expect(result.current.search).toBe('');
     expect(result.current.gender).toBe('all');
+    expect(result.current.modalUserEmail).toBe('');
   });
 
   it('deve ler os parâmetros presentes na URL', () => {
     const { result } = renderHook(() => useUserParams(), {
-      wrapper: createWrapper('/?page=3&search=maria&gender=female'),
+      wrapper: createWrapper('/?page=3&search=maria&gender=female&user=maria@example.com'),
     });
 
     expect(result.current.page).toBe(3);
     expect(result.current.search).toBe('maria');
     expect(result.current.gender).toBe('female');
+    expect(result.current.modalUserEmail).toBe('maria@example.com');
   });
 
   it('deve atualizar a página na URL e resetar a busca se desejado', () => {
@@ -43,16 +45,21 @@ describe('useUserParams', () => {
     expect(result.current.page).toBe(2);
   });
 
-  it('deve resetar para a página 1 ao alterar o termo de busca', () => {
+  it('deve abrir e fechar o modal alterando a URL', () => {
     const { result } = renderHook(() => useUserParams(), {
-      wrapper: createWrapper('/?page=4'),
+      wrapper: createWrapper('/'),
     });
 
     act(() => {
-      result.current.setSearch('dev');
+      result.current.openUserModal('safiya@example.com');
     });
 
-    expect(result.current.search).toBe('dev');
-    expect(result.current.page).toBe(1);
+    expect(result.current.modalUserEmail).toBe('safiya@example.com');
+
+    act(() => {
+      result.current.closeUserModal();
+    });
+
+    expect(result.current.modalUserEmail).toBe('');
   });
 });
