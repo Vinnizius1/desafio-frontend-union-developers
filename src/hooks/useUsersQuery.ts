@@ -54,6 +54,7 @@ export function useUsersQuery({
   return {
     ...query,
     users: paginatedUsers,
+    rawUsers,
     allFilteredUsers: filteredUsers,
     totalCount: filteredUsers.length,
     totalPages: pagination.totalPages,

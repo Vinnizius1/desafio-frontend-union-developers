@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import { UserTable } from './UserTable';
 import { User } from '../../types/user';
 
@@ -20,7 +21,11 @@ const mockUsers: User[] = [
 
 describe('UserTable Component', () => {
   it('deve renderizar a tabela com cabeçalhos semânticos e dados do usuário', () => {
-    render(<UserTable users={mockUsers} />);
+    render(
+      <MemoryRouter>
+        <UserTable users={mockUsers} />
+      </MemoryRouter>
+    );
 
     expect(screen.getByRole('table', { name: /tabela de usuários/i })).toBeInTheDocument();
     expect(screen.getByText('Julia')).toBeInTheDocument();
@@ -30,7 +35,11 @@ describe('UserTable Component', () => {
 
   it('deve chamar onUserClick ao clicar no botão Ver Perfil', () => {
     const handleUserClick = vi.fn();
-    render(<UserTable users={mockUsers} onUserClick={handleUserClick} />);
+    render(
+      <MemoryRouter>
+        <UserTable users={mockUsers} onUserClick={handleUserClick} />
+      </MemoryRouter>
+    );
 
     const actionBtn = screen.getByRole('button', { name: /ver perfil de julia alves/i });
     fireEvent.click(actionBtn);

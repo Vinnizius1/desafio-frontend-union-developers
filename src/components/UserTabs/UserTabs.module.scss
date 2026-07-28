@@ -1,0 +1,84 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.tabsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tabList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-xl;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: $spacing-lg;
+}
+
+.tabButton {
+  background: transparent;
+  border: none;
+  color: $color-grey-400;
+  font-family: $font-heading;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  padding: $spacing-sm $spacing-md;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+  }
+
+  &.active {
+    color: $color-white;
+    font-weight: $font-weight-bold;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background-color: $color-primary;
+      border-radius: 2px 2px 0 0;
+      box-shadow: 0 0 8px rgba(129, 26, 192, 0.6);
+    }
+  }
+}
+
+.tabPanel {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+}
+
+.infoRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  label {
+    font-family: $font-heading;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+  }
+
+  span {
+    font-size: $font-size-sm;
+    color: $color-grey-400;
+  }
+}

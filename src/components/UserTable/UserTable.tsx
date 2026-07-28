@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { User } from '../../types/user';
 import styles from './UserTable.module.scss';
 
@@ -8,6 +9,8 @@ export interface UserTableProps {
 }
 
 export function UserTable({ users, onUserClick, className = '' }: UserTableProps) {
+  const navigate = useNavigate();
+
   const formatDate = (isoDate?: string) => {
     if (!isoDate) return 'N/A';
     try {
@@ -15,6 +18,14 @@ export function UserTable({ users, onUserClick, className = '' }: UserTableProps
       return date.toLocaleDateString('pt-BR');
     } catch {
       return isoDate;
+    }
+  };
+
+  const handleAction = (user: User) => {
+    if (onUserClick) {
+      onUserClick(user);
+    } else {
+      navigate(`/user/${encodeURIComponent(user.email)}`);
     }
   };
 
@@ -48,7 +59,7 @@ export function UserTable({ users, onUserClick, className = '' }: UserTableProps
                   <button
                     type="button"
                     className={styles.actionButton}
-                    onClick={() => onUserClick?.(user)}
+                    onClick={() => handleAction(user)}
                     aria-label={`Ver perfil de ${user.name.first} ${user.name.last}`}
                   >
                     Ver Perfil

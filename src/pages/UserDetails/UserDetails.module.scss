@@ -1,0 +1,88 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.page {
+  min-height: 100vh;
+  background-color: $color-bg-main;
+  color: $color-text-white;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: $spacing-xl $spacing-md;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.backButton {
+  background: transparent;
+  border: none;
+  color: $color-grey-400;
+  font-family: $font-primary;
+  font-size: $font-size-md;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  margin-bottom: $spacing-xl;
+  align-self: flex-start;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+  }
+}
+
+.profileHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: $spacing-xl;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: $radius-full;
+  object-fit: cover;
+  border: 3px solid $color-primary;
+  margin-bottom: $spacing-md;
+  box-shadow: 0 0 20px rgba(129, 26, 192, 0.4);
+}
+
+.name {
+  font-family: $font-heading;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-bold;
+  color: $color-white;
+  margin-bottom: $spacing-xs;
+}
+
+.title {
+  font-size: $font-size-md;
+  color: $color-grey-400;
+  text-transform: capitalize;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.notFound {
+  text-align: center;
+  padding: $spacing-xl * 2;
+  color: $color-grey-400;
+}
