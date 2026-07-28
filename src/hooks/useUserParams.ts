@@ -1,5 +1,6 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback } from 'react';
+import { ViewMode } from '../components/ViewToggle/ViewToggle';
 
 export function useUserParams() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -7,6 +8,7 @@ export function useUserParams() {
   const page = Number(searchParams.get('page')) || 1;
   const search = searchParams.get('search') || '';
   const gender = (searchParams.get('gender') as 'all' | 'male' | 'female') || 'all';
+  const viewMode = (searchParams.get('view') as ViewMode) || 'grid';
 
   const setPage = useCallback(
     (newPage: number) => {
@@ -36,7 +38,6 @@ export function useUserParams() {
           } else {
             next.set('search', newSearch);
           }
-          // Reset para página 1 ao alterar busca
           next.delete('page');
           return next;
         },
@@ -56,8 +57,25 @@ export function useUserParams() {
           } else {
             next.set('gender', newGender);
           }
-          // Reset para página 1 ao alterar gênero
           next.delete('page');
+          return next;
+        },
+        { replace: true }
+      );
+    },
+    [setSearchParams]
+  );
+
+  const setViewMode = useCallback(
+    (newViewMode: ViewMode) => {
+      setSearchParams(
+        (prev) => {
+          const next = new URLSearchParams(prev);
+          if (newViewMode === 'grid') {
+            next.delete('view');
+          } else {
+            next.set('view', newViewMode);
+          }
           return next;
         },
         { replace: true }
@@ -74,9 +92,11 @@ export function useUserParams() {
     page,
     search,
     gender,
+    viewMode,
     setPage,
     setSearch,
     setGender,
+    setViewMode,
     resetFilters,
   };
 }

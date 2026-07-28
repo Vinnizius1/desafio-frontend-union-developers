@@ -12,7 +12,7 @@
 .pagination {
   display: inline-flex;
   align-items: center;
-  gap: v.$spacing-xs;
+  gap: v.$spacing-sm;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -26,48 +26,58 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
+    width: 40px;
     height: 40px;
-    padding: 0 0.5rem;
+    border-radius: v.$radius-full;
     font-family: v.$font-primary;
-    font-size: v.$font-size-sm;
-    font-weight: v.$font-weight-semibold;
-    color: v.$color-neutral-100;
-    background-color: v.$color-bg-card;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: v.$radius-md;
+    font-size: v.$font-size-md;
+    font-weight: v.$font-weight-medium;
+    color: v.$color-text-white;
+    background-color: transparent;
+    border: 1px solid rgba(129, 26, 192, 0.5);
     cursor: pointer;
     transition: all 0.2s ease;
     user-select: none;
 
     &:hover:not(:disabled) {
-      background-color: #414251;
+      background-color: rgba(129, 26, 192, 0.25);
+      border-color: v.$color-primary;
       color: v.$color-white;
-      border-color: rgba(129, 26, 192, 0.4);
+      transform: translateY(-1px);
     }
 
     &:focus-visible {
       outline: 2px solid v.$color-primary;
+      outline-offset: 2px;
     }
 
     &--active {
       background-color: v.$color-primary !important;
       color: v.$color-white !important;
       border-color: v.$color-primary !important;
+      font-weight: v.$font-weight-bold;
       cursor: default;
-      box-shadow: 0 4px 12px rgba(129, 26, 192, 0.3);
+      box-shadow: 0 0 12px rgba(129, 26, 192, 0.5);
     }
 
     &:disabled:not(&--active) {
-      opacity: 0.4;
+      opacity: 0.25;
       cursor: not-allowed;
-      border-color: transparent;
+      border-color: rgba(255, 255, 255, 0.1);
+      color: v.$color-grey-500;
     }
   }
 
   &__icon {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    color: currentColor;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
 
     &--next {
       transform: rotate(180deg);

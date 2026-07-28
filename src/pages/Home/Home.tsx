@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Header } from '../../components/Header/Header';
 import { Input } from '../../components/Input/Input';
 import { UserCard } from '../../components/UserCard/UserCard';
+import { UserTable } from '../../components/UserTable/UserTable';
+import { ViewToggle } from '../../components/ViewToggle/ViewToggle';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { UserModal } from '../../components/UserModal/UserModal';
 import { Button } from '../../components/Button/Button';
@@ -12,7 +14,18 @@ import { User } from '../../types/user';
 import styles from './Home.module.scss';
 
 export function Home() {
-  const { page, search, gender, setPage, setSearch, setGender, resetFilters } = useUserParams();
+  const {
+    page,
+    search,
+    gender,
+    viewMode,
+    setPage,
+    setSearch,
+    setGender,
+    setViewMode,
+    resetFilters,
+  } = useUserParams();
+
   const { users, isLoading, isError, isFetching, totalPages, refetch } = useUsersQuery({
     page,
     gender,
@@ -37,7 +50,7 @@ export function Home() {
       <Header />
 
       <main className={styles.mainContainer}>
-        {/* Seção de Filtros & Busca */}
+        {/* Seção de Filtros & Busca & Alternância de Visualização */}
         <section className={styles.filterSection} aria-label="Filtros de usuários">
           <div className={styles.searchWrapper}>
             <Input
@@ -48,28 +61,33 @@ export function Home() {
             />
           </div>
 
-          <div className={styles.genderFilters} role="group" aria-label="Filtro de gênero">
-            <button
-              type="button"
-              className={gender === 'all' ? styles.active : ''}
-              onClick={() => setGender('all')}
-            >
-              Todos
-            </button>
-            <button
-              type="button"
-              className={gender === 'female' ? styles.active : ''}
-              onClick={() => setGender('female')}
-            >
-              Feminino
-            </button>
-            <button
-              type="button"
-              className={gender === 'male' ? styles.active : ''}
-              onClick={() => setGender('male')}
-            >
-              Masculino
-            </button>
+          <div className={styles.controlsGroup}>
+            <div className={styles.genderFilters} role="group" aria-label="Filtro de gênero">
+              <button
+                type="button"
+                className={gender === 'all' ? styles.active : ''}
+                onClick={() => setGender('all')}
+              >
+                Todos
+              </button>
+              <button
+                type="button"
+                className={gender === 'female' ? styles.active : ''}
+                onClick={() => setGender('female')}
+              >
+                Feminino
+              </button>
+              <button
+                type="button"
+                className={gender === 'male' ? styles.active : ''}
+                onClick={() => setGender('male')}
+              >
+                Masculino
+              </button>
+            </div>
+
+            {/* Alternador de Visualização (Grid / Cards vs Tabela) */}
+            <ViewToggle viewMode={viewMode} onViewChange={setViewMode} />
           </div>
         </section>
 
@@ -102,25 +120,41 @@ export function Home() {
           </div>
         )}
 
-        {/* Sucesso: Grid de Cards de Usuários */}
+        {/* Sucesso: Grid de Cards OU Tabela de Usuários */}
         {!isLoading && !isError && users.length > 0 && (
-          <motion.div
-            className={`${styles.grid} ${isFetching ? styles.fetching : ''}`}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {users.map((user, idx) => (
+          <AnimatePresence mode="wait">
+            {viewMode === 'grid' ? (
               <motion.div
-                key={user.email || idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.2, delay: idx * 0.04 }}
+                key="grid-view"
+                className={`${styles.grid} ${isFetching ? styles.fetching : ''}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
               >
-                <UserCard user={user} onClick={() => handleOpenModal(user)} />
+                {users.map((user, idx) => (
+                  <motion.div
+                    key={user.email || idx}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.2, delay: idx * 0.03 }}
+                  >
+                    <UserCard user={user} onClick={() => handleOpenModal(user)} />
+                  </motion.div>
+                ))}
               </motion.div>
-            ))}
-          </motion.div>
+            ) : (
+              <motion.div
+                key="table-view"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.25 }}
+              >
+                <UserTable users={users} onUserClick={handleOpenModal} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         )}
 
         {/* Paginação */}

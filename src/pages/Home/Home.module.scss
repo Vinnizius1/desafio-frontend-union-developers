@@ -37,6 +37,13 @@
   max-width: 500px;
 }
 
+.controlsGroup {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  flex-wrap: wrap;
+}
+
 .genderFilters {
   display: flex;
   align-items: center;
