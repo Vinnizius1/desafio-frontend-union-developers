@@ -5,12 +5,17 @@ import { User, UserFilterState } from '../types/user';
  * Função pura testada via TDD.
  */
 export function filterUsers(users: User[], filters: UserFilterState): User[] {
-  const { searchTerm, minAge, maxAge } = filters;
+  const { searchTerm, minAge, maxAge, gender } = filters;
 
   const normalizedSearch = searchTerm ? searchTerm.trim().toLowerCase() : '';
 
   return users.filter((user) => {
-    // 1. Filtragem por Nome ou Sobrenome (Case-insensitive)
+    // 1. Filtragem por Gênero
+    if (gender && gender !== 'all' && user.gender !== gender) {
+      return false;
+    }
+
+    // 2. Filtragem por Nome ou Sobrenome (Case-insensitive)
     if (normalizedSearch) {
       const firstName = user.name.first.toLowerCase();
       const lastName = user.name.last.toLowerCase();

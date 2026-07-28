@@ -67,6 +67,16 @@ describe('filterUsers utility (TDD)', () => {
     expect(result[0].dob.age).toBe(29);
   });
 
+  it('deve filtrar por gênero (female / male)', () => {
+    const females = filterUsers(mockUsers, { searchTerm: '', gender: 'female' });
+    expect(females).toHaveLength(2);
+    expect(females.every(u => u.gender === 'female')).toBe(true);
+
+    const males = filterUsers(mockUsers, { searchTerm: '', gender: 'male' });
+    expect(males).toHaveLength(1);
+    expect(males[0].gender).toBe('male');
+  });
+
   it('deve retornar array vazio quando nenhum usuário corresponder ao filtro', () => {
     const result = filterUsers(mockUsers, { searchTerm: 'NonExistingName' });
     expect(result).toEqual([]);

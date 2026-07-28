@@ -23,11 +23,11 @@
 
 ## ⚡ Fase 4: Integração de API & Páginas Sincronizadas
 - [x] Criar tipos TypeScript da API `randomuser.me`
-- [ ] Criar serviço de busca de usuários e integração com TanStack Query
-- [ ] Conectar filtros e paginação com a URL (`URLSearchParams`)
-- [ ] Construir página principal de listagem
-- [ ] Construir página/modal de detalhes do usuário
-- [ ] Adicionar transições suaves com Motion
+- [x] Criar serviço de busca de usuários e integração com TanStack Query
+- [x] Conectar filtros e paginação com a URL (`URLSearchParams`)
+- [x] Construir página principal de listagem
+- [x] Construir página/modal de detalhes do usuário
+- [x] Adicionar transições suaves com Motion
 
 ## 🔍 Fase 5: Validação Final & Entrega
 - [ ] Executar suíte completa de testes (`npm test`) e verificar 100% de passagem

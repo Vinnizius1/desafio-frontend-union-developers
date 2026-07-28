@@ -1,0 +1,154 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.home {
+  min-height: 100vh;
+  background-color: $color-bg-main;
+  color: $color-text-white;
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing-lg $spacing-md $spacing-xl;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xl;
+}
+
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  @include respond-from('md') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.searchWrapper {
+  flex: 1;
+  max-width: 500px;
+}
+
+.genderFilters {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  background-color: $color-bg-input;
+  padding: $spacing-xs;
+  border-radius: $radius-md;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  button {
+    background: transparent;
+    border: none;
+    color: $color-grey-400;
+    padding: $spacing-sm $spacing-md;
+    border-radius: $radius-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $color-white;
+    }
+
+    &.active {
+      background-color: $color-primary;
+      color: $color-white;
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+  transition: opacity 0.3s ease;
+
+  &.fetching {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  @include respond-from('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-from('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.emptyState,
+.errorState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: $spacing-xl * 2 $spacing-md;
+  background-color: $color-bg-card;
+  border-radius: $radius-lg;
+  gap: $spacing-md;
+
+  h3 {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    color: $color-white;
+  }
+
+  p {
+    color: $color-grey-400;
+    max-width: 400px;
+  }
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-lg;
+
+  @include respond-from('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-from('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.skeletonCard {
+  height: 220px;
+  background-color: $color-bg-card;
+  border-radius: $radius-md;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.paginationWrapper {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: $spacing-lg;
+}

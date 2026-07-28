@@ -4,14 +4,20 @@ import styles from './UserCard.module.scss';
 export interface UserCardProps {
   user: User;
   className?: string;
+  onClick?: () => void;
 }
 
-export function UserCard({ user, className = '' }: UserCardProps) {
+export function UserCard({ user, className = '', onClick }: UserCardProps) {
   const fullName = `${user.name.first} ${user.name.last}`;
   const locationString = `${user.location.city}, ${user.location.country}`;
 
   return (
-    <article className={`${styles.card} ${className}`} aria-label={`Card de ${fullName}`}>
+    <article
+      className={`${styles.card} ${className}`}
+      aria-label={`Card de ${fullName}`}
+      onClick={onClick}
+      style={{ cursor: onClick ? 'pointer' : 'default' }}
+    >
       <header className={styles.card__header}>
         {/* Imagem com alt estrito com o nome da pessoa (regra W3C de acessibilidade) */}
         <img

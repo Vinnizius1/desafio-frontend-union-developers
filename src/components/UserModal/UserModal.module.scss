@@ -1,0 +1,130 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: $spacing-md;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background-color: $color-bg-card;
+  border-radius: $radius-lg;
+  padding: $spacing-xl;
+  box-shadow: $shadow-card;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: $color-text-white;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.closeButton {
+  position: absolute;
+  top: $spacing-md;
+  right: $spacing-md;
+  background: transparent;
+  border: none;
+  color: $color-grey-400;
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: $spacing-lg;
+
+  @include respond-from('md') {
+    flex-direction: row;
+    text-align: left;
+    gap: $spacing-lg;
+  }
+}
+
+.avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: $radius-full;
+  object-fit: cover;
+  border: 3px solid $color-primary;
+  margin-bottom: $spacing-sm;
+
+  @include respond-from('md') {
+    margin-bottom: 0;
+  }
+}
+
+.titleGroup {
+  h2 {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-bottom: $spacing-xs;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: $spacing-xs $spacing-sm;
+    background-color: rgba($color-primary, 0.2);
+    color: $color-yellow;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: capitalize;
+  }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: $spacing-md;
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-xs;
+
+  label {
+    font-size: $font-size-xs;
+    color: $color-grey-400;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: $font-weight-medium;
+  }
+
+  p {
+    font-size: $font-size-md;
+    color: $color-text-white;
+  }
+}
