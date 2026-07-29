@@ -7,7 +7,7 @@
 ## 📸 Preview da Aplicação
 
 <div align="center">
-  <img src="./src/assets/prints/demo-aplicacao.gif" alt="Demonstração da Aplicação" width="100%" style="max-width: 800px; border-radius: 8px;" />
+  <img src="./src/assets/prints/demo-app.gif" alt="Demonstração da Aplicação" width="100%" style="max-width: 800px; border-radius: 8px;" />
 </div>
 
 ---
