@@ -4,6 +4,14 @@
 
 ---
 
+## 📸 Preview da Aplicação
+
+<div align="center">
+  <img src="./src/assets/prints/demo-aplicacao.gif" alt="Demonstração da Aplicação" width="100%" style="max-width: 800px; border-radius: 8px;" />
+</div>
+
+---
+
 ## 🔗 Links de Demonstração em Produção
 
 * 🌐 **[Aplicação em Produção (Live App)](https://desafio-frontend-vinnizius.netlify.app/)**
@@ -46,7 +54,7 @@
 
 ```text
 src/
-├── assets/          # SVGs, ícones e arquivos estáticos
+├── assets/          # SVGs, ícones, prints e demonstrações
 ├── components/      # Componentes isolados com SCSS Modules, Storybook e Testes RTL
 │   ├── Button/
 │   ├── Input/
