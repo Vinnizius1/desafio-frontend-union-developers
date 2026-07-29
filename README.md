@@ -1,21 +1,21 @@
 # 🚀 Desafio Técnico Frontend — Union Developers
 
-> Aplicação web moderna desenvolvida para listagem, busca instantânea e navegação paginada de usuários consumindo a API `randomuser.me`. Construída com foco em **Clean Code**, **Mobile-First**, **Acessibilidade (a11y)**, **TanStack Query** e suíte completa de testes unitários orientados a **TDD**.
+> Aplicação web moderna desenvolvida para listagem, busca instantânea e navegação paginada de usuários consumindo a API `randomuser.me`. Construída com foco em **Clean Code**, **Mobile-First**, **Acessibilidade (a11y)**, **TanStack Query v5**, **Dual View Mode (Cards & Data Table)** e suíte de 57 testes automatizados com **Vitest + RTL (TDD)**.
 
 ---
 
-## 📸 Preview da Aplicação
+## 🔗 Links de Demonstração em Produção
 
-![Preview do Projeto](./src/assets/prints/preview_demo.png)
-
-🌐 **[Clique aqui para ver a Aplicação em Produção (Live Demo)](#)** *(Link de deploy em produção)*
+* 🌐 **[Aplicação em Produção (Live App)](https://desafio-frontend-vinnizius.netlify.app/)**
+* 📚 **[Design System & Documentação Viva (Storybook)](https://storybook-union-vinnizius.netlify.app/)**
 
 ---
 
 ## 💡 O que este projeto resolve?
 
-* 🔍 **Busca & Filtragem Inteligente:** Filtre usuários por primeiro nome, sobrenome e idade com **Debounce de digitação**, reduzindo requisições desnecessárias.
-* 🔗 **Sincronização de Estado na URL:** A página atual e os parâmetros de busca são refletidos na URL (`/?page=2&name=john`), permitindo compartilhar a busca exata ou atualizar a página sem perder o estado.
+* 🔍 **Busca & Filtragem Instantânea:** Filtre usuários por primeiro nome, sobrenome, gênero e idade com **Debounce de digitação**, reduzindo requisições desnecessárias.
+* 🔗 **Sincronização Total de Estado na URL:** A página atual, filtros de busca/gênero, modo de visualização (`?view=table`) e o **Modal de Usuário (`?user=email`)** são refletidos na URL com suporte a *Deep Linking* e navegação pelo histórico (*Browser Back Button*).
+* 📊 **Alternância de Visualização (Dual View Mode):** Escolha entre a visualização moderna em **Grid de Cards** com animações a 60fps via Framer Motion ou a **Tabela de Dados (Data Table)** semântica padrão WAI-ARIA (`<th scope="col">`).
 * ⚡ **Cache & Estado de Servidor:** Gerenciamento com **TanStack Query v5**, garantindo refetch automático, cache em memória e tratamento elegante de estados de *Loading*, *Error* e *Empty*.
 * 🎨 **Design System Fidelizado:** Estilização desenvolvida em **SCSS Modules (BEM)** com **Design Tokens** extraídos diretamente do Figma via MCP.
 
@@ -37,7 +37,7 @@
 * **Roteamento:** React Router DOM v7
 * **Animações:** Motion (Framer Motion v12+)
 * **Documentação de Componentes:** Storybook v10+
-* **Testes Automatizados:** Vitest + React Testing Library (RTL) + `@testing-library/user-event` (nativo do Vite com TDD)
+* **Testes Automatizados:** Vitest + React Testing Library (RTL) (57 testes 100% aprovados)
 * **API Externa:** RandomUser API (`randomuser.me`)
 
 ---
@@ -46,16 +46,19 @@
 
 ```text
 src/
-├── assets/          # SVGs, ícones e prints de demonstração
+├── assets/          # SVGs, ícones e arquivos estáticos
 ├── components/      # Componentes isolados com SCSS Modules, Storybook e Testes RTL
 │   ├── Button/
 │   ├── Input/
 │   ├── UserCard/
+│   ├── UserTable/
+│   ├── UserTabs/
+│   ├── ViewToggle/
+│   ├── UserModal/
 │   ├── Pagination/
 │   └── Header/
-├── hooks/           # Custom Hooks (useUsers, useDebounce, useUserFilter)
-├── pages/           # Páginas principais (Home/UserList, UserDetails)
-├── routes/          # Configuração de rotas do React Router
+├── hooks/           # Custom Hooks (useUsersQuery, useUserParams, useDebounce)
+├── pages/           # Páginas principais (Home, UserDetails)
 ├── services/        # Cliente HTTP e integração com TanStack Query
 ├── styles/          # Tokens SCSS (_variables.scss, _mixins.scss, _reset.scss)
 ├── types/           # Tipagens estritas em TypeScript (User, Filters, API Responses)

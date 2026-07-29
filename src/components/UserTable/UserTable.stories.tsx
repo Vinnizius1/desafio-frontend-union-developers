@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { MemoryRouter } from 'react-router-dom';
 import { UserTable } from './UserTable';
 import { User } from '../../types/user';
 
@@ -33,6 +34,13 @@ const meta: Meta<typeof UserTable> = {
   title: 'Components/UserTable',
   component: UserTable,
   tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <MemoryRouter>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
   argTypes: {
     onUserClick: { action: 'userClicked' },
   },
