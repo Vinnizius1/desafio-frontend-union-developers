@@ -1,6 +1,6 @@
 # 🚀 Desafio Técnico Frontend — Union Developers
 
-> Aplicação web moderna desenvolvida para listagem, busca instantânea e navegação paginada de usuários consumindo a API `randomuser.me`. Construída com foco em **Clean Code**, **Mobile-First**, **Acessibilidade (a11y)**, **TanStack Query v5**, **Dual View Mode (Cards & Data Table)** e suíte de 57 testes automatizados com **Vitest + RTL (TDD)**.
+> Aplicação web moderna desenvolvida como solução para o **[Desafio Técnico Frontend — Union Developers](https://github.com/union-developers-group/teste-frontend)** para listagem, busca instantânea e navegação paginada de usuários consumindo a API `randomuser.me`. Construída com foco em **Clean Code**, **Mobile-First**, **Acessibilidade (a11y)**, **TanStack Query v5**, **Dual View Mode (Cards & Data Table)** e suíte de 57 testes automatizados com **Vitest + RTL (TDD)**.
 
 ---
 
@@ -12,8 +12,9 @@
 
 ---
 
-## 🔗 Links de Demonstração em Produção
+## 🔗 Links do Projeto & Demonstração
 
+* 🎯 **[Repositório do Desafio Original (Union Developers)](https://github.com/union-developers-group/teste-frontend)**
 * 🌐 **[Aplicação em Produção (Live App)](https://desafio-frontend-vinnizius.netlify.app/)**
 * 📚 **[Design System & Documentação Viva (Storybook)](https://storybook-union-vinnizius.netlify.app/)**
 
